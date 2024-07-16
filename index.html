@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complex SPA Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="script.js"></script>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#" data-page="home">Home</a></li>
+      <li><a href="#" data-page="about">About</a></li>
+      <li><a href="#" data-page="services">Services</a></li>
+      <li><a href="#" data-page="portfolio">Portfolio</a></li>
+      <li><a href="#" data-page="contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Welcome to Our Company</h1>
+    <p>Your success is our priority</p>
+  </header>
+
+  <main id="app">
+    <section id="home" class="page active">
+      <h2>Home Page</h2>
+      <p>Welcome to our comprehensive single-page application demo. Here you'll find detailed information about our services, portfolio, and how to get in touch with us.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Our Mission</h3>
+          <p>We aim to deliver the best services to help our clients achieve their goals.</p>
+        </div>
+        <div class="card">
+          <h3>Our Vision</h3>
+          <p>We envision a world where our solutions empower businesses to thrive.</p>
+        </div>
+        <div class="card">
+          <h3>Our Values</h3>
+          <p>Integrity, Excellence, and Innovation are the core values that drive us.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="page">
+      <h2>About Us</h2>
+      <p>Learn more about our company's history, mission, and team.</p>
+      <h3>History</h3>
+      <p>We started in 2010 with a small team of dedicated professionals and have grown into a well-respected company in our industry.</p>
+      <h3>Our Team</h3>
+      <p>Our team is composed of experts in various fields, all working together to provide top-notch solutions to our clients.</p>
+    </section>
+
+    <section id="services" class="page">
+      <h2>Our Services</h2>
+      <p>We offer a wide range of services to meet the diverse needs of our clients.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Consulting</h3>
+          <p>We provide expert consulting services to help you navigate complex business challenges.</p>
+        </div>
+        <div class="card">
+          <h3>Development</h3>
+          <p>Our development team builds custom solutions tailored to your specific requirements.</p>
+        </div>
+        <div class="card">
+          <h3>Support</h3>
+          <p>We offer comprehensive support to ensure your systems are always running smoothly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="page">
+      <h2>Portfolio</h2>
+      <p>Check out some of the projects we have worked on.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Project 1</h3>
+          <p>A groundbreaking project that revolutionized the industry.</p>
+        </div>
+        <div class="card">
+          <h3>Project 2</h3>
+          <p>An innovative solution that addressed complex challenges.</p>
+        </div>
+        <div class="card">
+          <h3>Project 3</h3>
+          <p>A state-of-the-art development that set new standards.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="page">
+      <h2>Contact Us</h2>
+      <p>If you have any questions or need further information, feel free to contact us. We're here to help!</p>
+      <h3>Contact Information</h3>
+      <ul>
+        <li>Email: info@company.com</li>
+        <li>Phone: (123) 456-7890</li>
+        <li>Address: 123 Main Street, Anytown, USA</li>
+      </ul>
+      <h3>Contact Form</h3>
+      <form id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+
+</body>
+</html>
