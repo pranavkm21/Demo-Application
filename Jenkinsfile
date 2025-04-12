@@ -18,15 +18,17 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build steps...'
-                //sh 'npm install'
-                //sh 'npm run build'
-                archiveArtifacts '**/*.html, **/*.css, **/*.js'
+                sh 'npm install'
+                sh 'npm run build'
+                // Archive build files if needed
+                //archiveArtifacts '**/*.html, **/*.css, **/*.js'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running lint check...'
+                echo 'Running test check...'
+                // Add any linting command if necessary
                 //sh 'npm run lint'
             }
         }
@@ -34,7 +36,7 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to Staging...'
-                sh 'netlify deploy --site $NETLIFY_STAGING_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist --prod=false'
+                sh 'npx netlify deploy --site $NETLIFY_STAGING_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist --prod=false'
             }
         }
 
@@ -42,7 +44,7 @@ pipeline {
             steps {
                 input message: 'Approve Production Deployment?'
                 echo 'Deploying to Production...'
-                sh 'netlify deploy --site $NETLIFY_PRODUCTION_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist --prod=true'
+                sh 'npx netlify deploy --site $NETLIFY_PRODUCTION_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist --prod=true'
             }
         }
     }
@@ -53,11 +55,9 @@ pipeline {
         }
         failure {
             echo 'Pipeline failed!'
-            
             mail to: 'admin@example.com',
                  subject: "Pipeline failed",
                  body: "The pipeline execution failed. Please check the logs for more details."
         }
     }
-
 }
