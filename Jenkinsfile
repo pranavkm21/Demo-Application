@@ -18,8 +18,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build steps...'
-                //sh 'npm install'  // Use npx to install dependencies
-                sh 'npm run build'  // This assumes that you are using npx for running build, change if needed
+                sh 'npm install'  
+                sh 'npm run build'
             }
         }
 
