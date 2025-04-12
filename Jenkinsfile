@@ -1,5 +1,5 @@
 pipeline {
-    agent local
+    agent { label 'local' }
 
     environment {
         NETLIFY_AUTH_TOKEN = credentials('nfp_AKtV5sPs6nXRqB87W4zJxBE8bp5BJ6yz0e63')
