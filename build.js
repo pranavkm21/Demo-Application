@@ -2,19 +2,22 @@ const fs = require('fs');
 const path = require('path');
 const ncp = require('ncp').ncp;
 
-const sourceDir = path.join(__dirname, '');
+const sourceDir = __dirname;
 const distDir = path.join(__dirname, 'dist');
 
-// Check if dist folder exists; if not, create it
+// Remove existing dist folder to avoid nesting
 if (fs.existsSync(distDir)) {
-  fs.rmSync(distDir, { recursive: true, force: true });  // Clear out any previous dist folder to avoid the nesting issue
+  fs.rmSync(distDir, { recursive: true, force: true });
 }
 fs.mkdirSync(distDir);
 
-// Copy all files from src to dist
-ncp(sourceDir, distDir, function (err) {
+// Filter out dist directory itself during copy
+ncp.limit = 16;
+ncp(sourceDir, distDir, {
+  filter: (file) => !file.includes(path.join('dist')) && !file.includes('node_modules')
+}, (err) => {
   if (err) {
-    return console.error(err);
+    return console.error('Copy failed:', err);
   }
   console.log('Build successful: Files copied to dist');
 });
