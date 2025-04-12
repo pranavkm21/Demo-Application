@@ -34,7 +34,7 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to Staging...'
-                sh 'npx netlify deploy --site $NETLIFY_STAGING_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist --prod=false'
+                sh 'npx netlify deploy --site $NETLIFY_STAGING_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist'
             }
         }
 
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 input message: 'Approve Production Deployment?'
                 echo 'Deploying to Production...'
-                sh 'npx netlify deploy --site $NETLIFY_PRODUCTION_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist --prod=true'
+                sh 'npx netlify deploy --site $NETLIFY_PRODUCTION_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist'
             }
         }
     }
