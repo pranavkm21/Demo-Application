@@ -20,6 +20,7 @@ pipeline {
                 echo 'Running build steps...'
                 sh 'npm install'
                 sh 'npm run build'
+                archiveArtifacts '**/*.html, **/*.css, **/*.js'
             }
         }
 
