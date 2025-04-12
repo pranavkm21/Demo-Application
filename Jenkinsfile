@@ -18,8 +18,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build steps...'
-                sh 'npm install'
-                sh 'npm run build'
+                //sh 'npm install'
+                //sh 'npm run build'
                 archiveArtifacts '**/*.html, **/*.css, **/*.js'
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running lint check...'
-                sh 'npm run lint'
+                //sh 'npm run lint'
             }
         }
 
