@@ -18,25 +18,23 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build steps...'
-                sh 'npm install'
-                sh 'npm run build'
-                // Archive build files if needed
-                //archiveArtifacts '**/*.html, **/*.css, **/*.js'
+                sh 'npx --no-install install'
+                sh 'npx --no-install run build'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running test check...'
-                // Add any linting command if necessary
-                //sh 'npm run lint'
+                echo 'Running lint check...'
+                // Uncomment the following line if you want to run lint using npx
+                // sh 'npx --no-install run lint'
             }
         }
 
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to Staging...'
-                sh 'npx netlify deploy --site $NETLIFY_STAGING_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist --prod=false'
+                sh 'npx --no-install netlify deploy --site $NETLIFY_STAGING_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist --prod=false'
             }
         }
 
@@ -44,7 +42,7 @@ pipeline {
             steps {
                 input message: 'Approve Production Deployment?'
                 echo 'Deploying to Production...'
-                sh 'npx netlify deploy --site $NETLIFY_PRODUCTION_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist --prod=true'
+                sh 'npx --no-install netlify deploy --site $NETLIFY_PRODUCTION_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=dist --prod=true'
             }
         }
     }
@@ -55,6 +53,7 @@ pipeline {
         }
         failure {
             echo 'Pipeline failed!'
+            
             mail to: 'admin@example.com',
                  subject: "Pipeline failed",
                  body: "The pipeline execution failed. Please check the logs for more details."
