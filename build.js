@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const ncp = require('ncp').ncp;
 
-const sourceDir = path.join(__dirname, 'src');  // If your source files are inside 'src' folder
+const sourceDir = path.join(__dirname, '');  
 const distDir = path.join(__dirname, 'dist');
 
 // Check if dist folder exists; if not, create it
